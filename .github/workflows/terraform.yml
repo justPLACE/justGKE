@@ -12,8 +12,6 @@ jobs:
   terraform:
     env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_SECRET }}
-        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-        ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
     name: "Terraform"
     runs-on: ubuntu-latest
     strategy:

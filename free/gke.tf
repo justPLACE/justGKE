@@ -6,13 +6,11 @@ provider "google" {
 resource "google_container_cluster" "cluster" {
   name                      = var.cluster_name
   location                  = var.location
-  # project                   = var.project_id
   subnetwork                = var.subnetwork
-  initial_node_count        = 1
   remove_default_node_pool  = true
   default_max_pods_per_node = 110
-  logging_service           = none
-  monitoring_service        = none
+  logging_service           = "none"
+  monitoring_service        = "none"
 }
 
 resource "google_container_node_pool" "pool" {
