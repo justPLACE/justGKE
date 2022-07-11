@@ -1,0 +1,13 @@
+cluster_name           = "cluster"
+location               = "us-east1-c"
+project_id             = "justa-ti"
+subnetwork             = "default"
+istio_enabled          = "false"
+istio_auth             = "AUTH_MUTUAL_TLS"
+node_pool_name         = "pool"
+master_version         = "1.22.8-gke.202"
+worker_nodes_version   = "1.22.8-gke.202"
+node_locations         = ["us-east1-c"]
+worker_nodes_count     = "1"
+worker_nodes_disk_size = "30"
+worker_node_type       = "e2-micro"
