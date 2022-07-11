@@ -8,10 +8,6 @@ variable "master_version" {}
 
 variable "subnetwork" {}
 
-variable "istio_enabled" {}
-
-variable "istio_auth" {}
-
 variable "node_pool_name" {}
 
 variable "worker_nodes_version" {}
