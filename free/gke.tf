@@ -8,7 +8,6 @@ resource "google_container_cluster" "cluster" {
   location                  = var.location
   subnetwork                = var.subnetwork
   remove_default_node_pool  = true
-  default_max_pods_per_node = 110
   logging_service           = "none"
   monitoring_service        = "none"
   initial_node_count        = 1
