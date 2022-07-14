@@ -21,5 +21,3 @@ variable "worker_nodes_count" {}
 variable "worker_nodes_disk_size" {}
 
 variable "worker_node_type" {}
-
-
