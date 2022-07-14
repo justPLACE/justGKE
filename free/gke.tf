@@ -11,6 +11,7 @@ resource "google_container_cluster" "cluster" {
   default_max_pods_per_node = 110
   logging_service           = "none"
   monitoring_service        = "none"
+  initial_node_count        = 1
 }
 
 resource "google_container_node_pool" "pool" {
