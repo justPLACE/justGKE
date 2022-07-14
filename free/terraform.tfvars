@@ -1,4 +1,5 @@
 cluster_name           = "cluster"
+region                 = "us-east1"
 location               = "us-east1-c"
 project_id             = "justa-ti"
 subnetwork             = "default"

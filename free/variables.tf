@@ -1,5 +1,7 @@
 variable "cluster_name" {}
 
+variable "region" {}
+
 variable "location" {}
 
 variable "project_id" {}
