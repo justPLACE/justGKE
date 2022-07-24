@@ -47,35 +47,19 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
         run: terraform apply -auto-approve
   
-  # bootstrap:
-  #   name: bootstrap-cluster
-  #   runs-on: ubuntu-latest
-  #   needs: terraform
-  #   steps:    
-  #     - id: get-credentials
-  #       if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-  #       uses: google-github-actions/get-gke-credentials@main
-  #       with:
-  #         cluster_name: production-cluster
-  #         location: us-east1
-  #         credentials: ${{ secrets.GCP_SECRET }}
-      
-  #     - id: get-pods
-  #       if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-  #       run: kubectl get pods -A 
+  bootstrap:
+    name: bootstrap-cluster
+    runs-on: ubuntu-latest
+    needs: terraform
+    steps:    
+      - id: get-credentials
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
+        uses: google-github-actions/get-gke-credentials@main
+        with:
+          cluster_name: cluster
+          location: us-east1-c
+          credentials: ${{ secrets.GCP_SECRET }}
 
-  #     - id: install-flagger 
-  #       if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-  #       run: |
-  #         helm repo add flagger https://flagger.app
-  #         helm install my-flagger flagger/flagger --version 1.4.2
-
-  #     - id: install-istio-operator
-  #       if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-  #       run: |
-  #         helm repo add stevehipwell https://stevehipwell.github.io/helm-charts/
-  #         helm install my-istio-operator stevehipwell/istio-operator --version 1.2.2
-
-  #     - id: get-pods-after-bootstrap
-  #       if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-  #       run: kubectl get pods -A 
+      - id: install
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
+        run: pwd && kubectl apply -f ../free
